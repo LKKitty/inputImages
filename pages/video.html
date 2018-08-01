@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../styles/video-js.css">
+    <script src="../scripts/flexible.js"></script>
+    <title>视频</title>
+    <style>
+        .wrapper {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-box {
+            position: relative;
+            width: 10rem/* 400/40 */
+            ;
+            height: 5.6rem/* 300/40 */
+            ;
+        }
+
+        video {
+            width: 10rem/* 400/40 */
+            ;
+            height: 5.6rem/* 300/40 */
+            ;
+        }
+
+        audio::-webkit-media-controls-mute-button,
+        video::-webkit-media-controls-mute-button {
+            display: none;
+        }
+
+        audio::-webkit-media-controls-panel,
+        video::-webkit-media-controls-panel {
+            background-color: rgba(0, 0, 0, 0.2)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="video-box">
+            <video <source src="../video.mp4" type='video/mp4' controls controlsList="nodownload" />
+            </video>
+        </div>
+       
+
+
+    </div>
+    <p>ffffffff</p>
+    <p>ffffffff</p>
+    <p>ffffffff</p>
+    <p>ffffffff</p>
+    <p>ffffffff</p>
+    <p>ffffffff</p>
+
+    <p>ffffffff</p>
+    <p>ffffffff</p>
+    <p>ffffffff</p>
+    <p>ffffffff</p>
+
+    <p>ffffffff</p>
+    <p>ffffffff</p>
+    <p>ffffffff</p>
+    <p>ffffffff</p>
+
+
+    <p>ffffffff</p>
+    <p>ffffffff</p>
+    <p>ffffffff</p>
+
+    <p>ffffffff</p>
+    <p>ffffffff</p>
+
+    <p>ffffffff</p>
+    <p>ffffffff</p>
+    <p>ffffffff</p>
+    <script src="../scripts/video.min.js"></script>
+    <script>
+        var body = document.getElementsByTagName('body');
+        body[0].ondblclick = function (event) {
+            alert('你进行了双击')
+        }
+        window.resize=function(){
+            console.log(document.body.offsetWidth)
+        }
+        // window.onresize = function () {
+        //     console.log(body[0].style.width)
+        // };
+        window.resize()
+
+    </script>
+</body>
+
+</html>

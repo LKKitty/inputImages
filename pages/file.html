@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../styles/reset.css">
+  <script src="../scripts/flexible.js"></script>
+  <script src="../scripts/jquery-3.3.1.min.js"></script>
+  <title>上传图片/视频</title>
+  <style>
+    #wrapper {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .container {
+      position: relative;
+      width: 8.9rem/* 356/40 */
+      ;
+      height: 8.825rem/* 353/40 */
+      ;
+      /* background-color: bisque; */
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      margin-top: 2.0rem/* 30/40 */
+      ;
+    }
+
+    .upload-box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 8.9rem/* 356/40 */
+      ;
+      height: 8.825rem/* 353/40 */
+      ;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      overflow: hidden;
+    }
+    .upload-img {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 8.9rem/* 356/40 */
+      ;
+      height: 8.825rem/* 353/40 */
+      ;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap
+    }
+    .upload-img img{
+      width: 4.3rem /* 172/40 */;
+      height: 4.275rem /* 171/40 */;
+    }
+    .upload-input{
+      position: relative;
+      width: 4.3rem /* 172/40 */;
+      height: 4.275rem /* 171/40 */;
+    }
+    .upload-input input{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4.3rem /* 172/40 */;
+      height: 4.275rem /* 171/40 */;
+      opacity: 0;
+    }
+    .img{
+      margin-top: 0.15rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="wrapper">
+    <div class="container">
+      <div class="upload-box">
+        <div class="upload-img">
+          <div class="upload-input">
+            <img src="http://pbzngw3z7.bkt.clouddn.com/icon_upload_img.png">
+            <input type="file" class="upload" onchange=onUpload2(this.files[0]) multiple accept="image/png,image/gif,image/jpg,image/jpeg">
+          </div>
+          <img src="http://pbzngw3z7.bkt.clouddn.com/icon_img_holder.png" class="img">
+          <img src="http://pbzngw3z7.bkt.clouddn.com/icon_img_holder.png" class="img">
+          <img src="http://pbzngw3z7.bkt.clouddn.com/icon_img_holder.png" class="img">
+          <img src="http://pbzngw3z7.bkt.clouddn.com/icon_img_holder.png" class="img">
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+     var count = 0;
+    function onUpload2(file) {
+
+      var blob = new Blob([file]), // 文件转化成二进制文件
+      url = URL.createObjectURL(blob); //转化成url
+      if (/image/g.test(file.type)) {
+        $('.img').eq( count).attr('src', url);
+        $('.img').eq( count).after(
+          $('.upload-input')
+        )
+        $('.img').onload = function (e) {
+          URL.revokeObjectURL(this.src);  // 释放createObjectURL创建的对象
+        }
+        count++;
+        console.log(count)
+      }
+    }
+    $('.img').on('click',function(){
+      $(this).attr('src','../images/icon_img_holder.png');
+      $('.upload-img').append($(this));
+      count--;
+    })
+  </script>
+</body>
+
+</html>
